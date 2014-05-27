@@ -1,0 +1,11 @@
+%h1 Devices List
+%table{:border => "1"}
+  %thead
+    %tr
+      %td Serial Number
+      %td Type
+  %tbody
+    - devices.each do |device|
+      %tr
+        %td= device[0]
+        %td= device[1]
