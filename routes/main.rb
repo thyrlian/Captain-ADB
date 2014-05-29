@@ -1,7 +1,7 @@
 module CaptainADB
   class App < Sinatra::Base
     get '/' do
-      'Captain ADB'
+      haml :main
     end
   end
 end

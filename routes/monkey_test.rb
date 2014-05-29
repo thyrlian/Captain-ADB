@@ -5,8 +5,12 @@ module CaptainADB
     include ADB
     
     get '/test/monkey/start/?' do
-      start_monkey_test(@package_name)
-      'Monkey Test starts'
+      if session[:package_name]
+        start_monkey_test(session[:package_name])
+        'Monkey Test starts'
+      else
+        'Please specify application (package) name first.'
+      end
     end
 
     get '/test/monkey/stop/?' do

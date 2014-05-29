@@ -12,10 +12,7 @@ module CaptainADB
       set :app_file, File.join(root_dir, File.basename(__FILE__))
       set :views, "#{root_dir}/views"
       set :public_folder, "#{root_dir}/public"
-    end
-    
-    before do
-      @package_name = '[test_app_package_name]'
+      enable :sessions
     end
   end
 end
