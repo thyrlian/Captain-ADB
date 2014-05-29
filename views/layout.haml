@@ -2,6 +2,8 @@
 %html{:lang => "en"}
   %head
     %meta{ :charset => "utf-8" }
+    %link{ :href => '/css/bootstrap.css', :rel => 'stylesheet' }
     %title Captain ADB
   %body
     = yield
+    %script{ :src => '/js/bootstrap.js' }
