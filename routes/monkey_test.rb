@@ -3,13 +3,12 @@ require_relative 'import'
 module CaptainADB
   class App < Sinatra::Base
     include ADB
+    include Sinatra::SessionHelper
     
     get '/test/monkey/start/?' do
-      if session[:package_name]
-        start_monkey_test(session[:package_name])
+      execute_if_package_name_exists do |package_name|
+        start_monkey_test(package_name)
         'Monkey Test starts'
-      else
-        'Please specify application (package) name first.'
       end
     end
 
