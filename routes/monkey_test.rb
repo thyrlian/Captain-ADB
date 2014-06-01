@@ -6,7 +6,7 @@ module CaptainADB
     include Sinatra::SessionHelper
     
     get '/test/monkey/start/?' do
-      execute_if_package_name_exists do |package_name|
+      execute_if_package_name_exists_else_show_flash do |package_name|
         start_monkey_test(package_name)
         'Monkey Test starts'
       end

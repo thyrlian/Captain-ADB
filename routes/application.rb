@@ -11,13 +11,13 @@ module CaptainADB
     end
     
     get '/application/uninstall/?' do
-      execute_if_package_name_exists do |package_name|
+      execute_if_package_name_exists_else_show_flash do |package_name|
         uninstall_app(package_name)
       end
     end
 
     get '/application/clear/?' do
-      execute_if_package_name_exists do |package_name|
+      execute_if_package_name_exists_else_show_flash do |package_name|
         clear_app(package_name)
       end
     end

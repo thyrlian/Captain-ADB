@@ -1,5 +1,6 @@
 require 'sinatra/base'
 require 'haml'
+require 'rack-flash'
 
 require_relative 'routes/init'
 require_relative 'helpers/init'
@@ -13,6 +14,7 @@ module CaptainADB
       set :views, "#{root_dir}/views"
       set :public_folder, "#{root_dir}/public"
       enable :sessions
+      use Rack::Flash
     end
   end
 end
