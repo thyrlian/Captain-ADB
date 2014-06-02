@@ -1,3 +1,10 @@
 .new-line {
   margin-top: 10px;
 }
+
+.alert-danger,
+  .alert-error {
+  color: #b94a48;
+  background-color: #f2dede;
+  border-color: #eed3d7;
+}
