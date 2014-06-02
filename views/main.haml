@@ -1,6 +1,8 @@
 %div{:class => "container-fluid"}
   - if flash[:error]
-    %p <em>Error:</em> #{flash[:error]}
+    %div{:class => "alert alert-error"}
+      %button{:type => "button", :class => "close", :"data-dismiss" => "alert"} &times;
+      %p <em>Error:</em> #{flash[:error]}
 
   %h1 Specify the application
   %form{:role => "form", :action => '/application/', :method => 'post'}
