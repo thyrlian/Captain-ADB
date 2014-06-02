@@ -6,6 +6,7 @@
     %link{ :href => '/css/style.css', :rel => 'stylesheet' }
     %title Captain ADB
   %body
-    = yield
     %script{ :src => '//code.jquery.com/jquery.js' }
     %script{ :src => '/js/bootstrap.min.js' }
+    %div{:class => "container-fluid"}
+      = yield
