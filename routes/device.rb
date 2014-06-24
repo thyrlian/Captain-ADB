@@ -9,6 +9,14 @@ module CaptainADB
       get '/?' do
         haml :list, :locals => {:devices => list_devices}
       end
+      
+      get '.json' do
+        content_type :json
+        devices = list_devices.inject([]) do |list, device|
+          list.push({'sn' => device[0], 'type' => device[1]})
+        end
+        json devices
+      end
     end
   end
 end

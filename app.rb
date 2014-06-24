@@ -1,6 +1,7 @@
 require 'sinatra/base'
 require 'sinatra/contrib'
 require 'haml'
+require 'json'
 require 'rack-flash'
 
 require_relative 'routes/init'
@@ -16,6 +17,7 @@ module CaptainADB
       set :public_folder, "#{root_dir}/public"
       enable :sessions
       register Sinatra::Namespace
+      helpers Sinatra::JSON
       use Rack::Flash
     end
   end
