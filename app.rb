@@ -1,4 +1,5 @@
 require 'sinatra/base'
+require 'sinatra/contrib'
 require 'haml'
 require 'rack-flash'
 
@@ -14,6 +15,7 @@ module CaptainADB
       set :views, "#{root_dir}/views"
       set :public_folder, "#{root_dir}/public"
       enable :sessions
+      register Sinatra::Namespace
       use Rack::Flash
     end
   end
