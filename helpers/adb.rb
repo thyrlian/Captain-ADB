@@ -12,22 +12,22 @@ module CaptainADB
     def uninstall_app(package_name)
       result = `adb uninstall #{package_name}`.chomp
       if result == 'Success'
-        'Uninstalled successfully'
+        'Uninstalled successfully.'
       elsif result == 'Failure'
-        'Can not uninstall, app does not exist'
+        'Can not uninstall, app does not exist.'
       else # - waiting for device -
-        'Please check your device connection'
+        'Please check your device connection.'
       end
     end
 
     def clear_app(package_name)
       result = `adb shell pm clear #{package_name}`.chomp
       if result == 'Success'
-        'Cleared app\'s data & cache successfully'
+        'Cleared app\'s data & cache successfully.'
       elsif result == 'Failed'
-        'Can not clear, app does not exist'
+        'Can not clear, app does not exist.'
       else # - waiting for device -
-        'Please check your device connection'
+        'Please check your device connection.'
       end
     end
 
