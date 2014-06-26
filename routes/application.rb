@@ -26,7 +26,6 @@ module CaptainADB
       
       post '/:package_name/?' do
         content_type :json
-        session[:package_name] = params[:package_name]
         json 'message' => 'Application successfully designated.', 'application' => params[:package_name]
       end
       
