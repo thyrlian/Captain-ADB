@@ -2,11 +2,14 @@
 %html{:lang => "en"}
   %head
     %meta{ :charset => "utf-8" }
+    %script{ :src => '/js/bootstrap.min.js' }
     %link{ :href => '/css/bootstrap.css', :rel => 'stylesheet' }
     %link{ :href => '/css/style.css', :rel => 'stylesheet' }
+    - if defined? @use_jquery
+      %script{ :src => '//code.jquery.com/jquery-1.11.1.min.js' }
+      %script{ :src => '//code.jquery.com/ui/1.11.1/jquery-ui.min.js' }
+      %link{ :href => '//code.jquery.com/ui/1.11.1/themes/smoothness/jquery-ui.css', :rel => 'stylesheet' }
     %title Captain ADB
   %body
-    %script{ :src => '//code.jquery.com/jquery.js' }
-    %script{ :src => '/js/bootstrap.min.js' }
     %div{:class => "container-fluid"}
       = yield
