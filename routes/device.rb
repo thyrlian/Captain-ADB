@@ -12,10 +12,7 @@ module CaptainADB
       
       get '.json' do
         content_type :json
-        devices = list_devices.inject([]) do |list, device|
-          list.push({'sn' => device[0], 'type' => device[1]})
-        end
-        json devices
+        json list_devices_with_details
       end
     end
   end
