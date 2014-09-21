@@ -7,9 +7,13 @@
   %thead
     %tr
       %td Serial Number
-      %td Type
+      %td Manufacturer
+      %td Brand
+      %td Model
   %tbody
-    - devices.each do |device|
+    - devices.each_pair do |sn, details|
       %tr
-        %td= device[0]
-        %td= device[1]
+        %td= sn
+        %td= details['manufacturer']
+        %td= details['brand']
+        %td= details['model']

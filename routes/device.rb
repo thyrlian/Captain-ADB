@@ -7,7 +7,7 @@ module CaptainADB
     
     namespace '/devices' do
       get '/?' do
-        haml :list, :locals => {:devices => list_devices}
+        haml :list, :locals => {:devices => list_devices_with_details}
       end
       
       get '.json' do
