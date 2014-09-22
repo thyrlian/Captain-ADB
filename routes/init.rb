@@ -1,4 +1,2 @@
-require_relative 'main'
-require_relative 'application'
-require_relative 'device'
-require_relative 'monkey_test'
+excl = ['import', 'init']
+Dir["#{File.dirname(__FILE__)}/*.rb"].each { |file| require file unless excl.include?(/.*\/(.*?)\.rb$/.match(file)[1]) }

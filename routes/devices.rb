@@ -8,11 +8,11 @@ module CaptainADB
     namespace '/devices' do
       post '/?' do
         session[:device_sn] = params[:device_sn]
-        redirect '/'
+        redirect '/applications'
       end
       
       get '/?' do
-        haml :list, :locals => {:devices => list_devices_with_details}
+        haml :devices, :locals => {:devices => list_devices_with_details}
       end
       
       get '.json' do

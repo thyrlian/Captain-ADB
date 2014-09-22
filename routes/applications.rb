@@ -6,10 +6,15 @@ module CaptainADB
     include ADB
     include Sinatra::SessionHelper
     
-    namespace '/application' do
+    namespace '/applications' do
       post '/?' do
         session[:package_name] = params[:package_name]
         redirect '/'
+      end
+      
+      get '/?' do
+        @use_jquery = true
+        haml :applications
       end
     
       get '/uninstall/?' do

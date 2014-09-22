@@ -1,7 +1,7 @@
 module CaptainADB
   class App < Sinatra::Base
     get '/' do
-      haml :main
+      redirect '/devices'
     end
   end
 end

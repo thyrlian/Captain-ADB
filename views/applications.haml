@@ -2,7 +2,6 @@
   %div{:class => "alert alert-error new-line"}
     %button{:type => "button", :class => "close", :"data-dismiss" => "alert"} &times;
     <strong>Error!</strong> #{flash[:error]}
-%h1 Specify the application
 %form{:role => "form", :action => '/application/', :method => 'post'}
   %div{:class => "form-group"}
   %label{:for => "packageName"} Application Package Name
@@ -11,5 +10,5 @@
   %div{:class => "new-line"}
     %button{:type => "submit", :class => "btn btn-default"} Submit
 %br
-%strong App Under Test:&nbsp;
-%em #{session[:package_name]}
+%strong Chosen Device:&nbsp;
+%em #{session[:device_sn]}
