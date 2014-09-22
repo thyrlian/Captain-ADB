@@ -3,7 +3,7 @@
     :javascript
       window.setTimeout(function(){window.location.reload();}, 1500);
 %h1 Devices List
-%table{:class => "table table-striped"}
+%table{:class => "table table-striped table-hover"}
   %thead
     %tr
       %td Serial Number
@@ -11,9 +11,9 @@
       %td Brand
       %td Model
   %tbody
-    - devices.each_pair do |sn, details|
+    - devices.each do |device|
       %tr
-        %td= sn
-        %td= details['manufacturer']
-        %td= details['brand']
-        %td= details['model']
+        %td= device['sn']
+        %td= device['manufacturer']
+        %td= device['brand']
+        %td= device['model']

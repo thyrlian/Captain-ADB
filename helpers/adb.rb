@@ -10,16 +10,16 @@ module CaptainADB
     end
     
     def list_devices_with_details
-      devices = list_devices.inject({}) do |devices, device_sn|
-        device_details = {}
+      devices = list_devices.inject([]) do |devices, device_sn|
+        device = {}
+        device['sn'] = device_sn
         ['manufacturer', 'brand', 'model'].each do |property|
           cmd = "adb -s #{device_sn} shell getprop | grep 'ro.product.#{property}'"
           regex = /#{property}\]:\s+\[(.*?)\]$/
           property_value = regex.match(`#{cmd}`.chomp)
-          device_details[property] = property_value ? property_value[1] : 'N/A'
+          device[property] = property_value ? property_value[1] : 'N/A'
         end
-        devices[device_sn] = device_details
-        devices
+        devices.push(device)
       end
     end
 
