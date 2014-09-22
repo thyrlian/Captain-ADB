@@ -6,6 +6,11 @@ module CaptainADB
     include ADB
     
     namespace '/devices' do
+      post '/?' do
+        session[:device_sn] = params[:device_sn]
+        redirect '/'
+      end
+      
       get '/?' do
         haml :list, :locals => {:devices => list_devices_with_details}
       end
