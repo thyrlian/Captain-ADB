@@ -22,6 +22,11 @@ module CaptainADB
         devices.push(device)
       end
     end
+    
+    def list_installed_packages(device_sn = nil)
+      cmd = PrivateMethods.synthesize_command('adb shell pm list packages', device_sn)
+      `#{cmd}`.split("\n").map! { |pkg| pkg.gsub(/^package:/, '').chomp }
+    end
 
     def uninstall_app(package_name)
       result = `adb uninstall #{package_name}`.chomp
@@ -55,6 +60,19 @@ module CaptainADB
     
     def stop_monkey_test
       `adb shell ps | awk '/com\.android\.commands\.monkey/ { system("adb shell kill " $2) }'`
+    end
+    
+    class PrivateMethods
+      class << self
+        def synthesize_command(cmd, device_sn)
+          if device_sn.nil?
+            cmd
+          else
+            # -s <specific device>
+            cmd.gsub(/^adb\s/, "adb -s #{device_sn} ")
+          end
+        end
+      end
     end
   end
 end

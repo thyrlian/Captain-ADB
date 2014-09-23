@@ -14,6 +14,11 @@ module CaptainADB
       
       get '/?' do
         @use_jquery = true
+        unless session[:device_sn].nil?
+          @installed_packages = list_installed_packages(session[:device_sn])
+        else
+          @installed_packages = []
+        end
         haml :applications
       end
     
