@@ -27,6 +27,22 @@ module CaptainADB
       cmd = PrivateMethods.synthesize_command('adb shell pm list packages', device_sn)
       `#{cmd}`.split("\n").map! { |pkg| pkg.gsub(/^package:/, '').chomp }
     end
+    
+    def take_a_screenshot(dir, device_sn = nil)
+      dir = dir.gsub(/\/$/, '') + '/'
+      system("mkdir -p #{dir}")
+      timestamp = Time.now.strftime('%Y%m%d_%H%M%S_%L')
+      file_path = "#{dir}screenshot_#{timestamp}.png"
+      cmd = 'adb shell screencap -p'
+      cmd = PrivateMethods.synthesize_command(cmd, device_sn)
+      data = `#{cmd}`.encode('ASCII-8BIT', 'binary').gsub(/\r\n/, "\n")
+      begin
+        File.open(file_path, 'w') { |f| f.write(data) }
+      rescue Exception => e
+        return {'message' => e.message, 'backtrace' => e.backtrace}
+      end
+      return file_path
+    end
 
     def uninstall_app(package_name)
       result = `adb uninstall #{package_name}`.chomp
