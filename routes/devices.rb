@@ -19,6 +19,10 @@ module CaptainADB
         content_type :json
         json list_devices_with_details
       end
+      
+      get '/:device_sn/packages.json' do |device_sn|
+        json list_installed_packages(device_sn)
+      end
     end
   end
 end
