@@ -39,9 +39,9 @@ module CaptainADB
       begin
         File.open(file_path, 'w') { |f| f.write(data) }
       rescue Exception => e
-        return {'message' => e.message, 'backtrace' => e.backtrace}
+        return [false, {'message' => e.message, 'backtrace' => e.backtrace}]
       end
-      return file_path
+      return [true, {'file_path' => file_path}]
     end
 
     def uninstall_app(package_name)

@@ -25,8 +25,8 @@ module CaptainADB
       end
       
       post '/:device_sn/screenshots' do |device_sn|
-        file_path = take_a_screenshot("#{settings.public_folder}/img/screenshots", device_sn)
-        file_path.respond_to?(:keys) ? [500, file_path.to_json] : [201, file_path]
+        result = take_a_screenshot("#{settings.public_folder}/img/screenshots", device_sn)
+        result.first ? [201, result[1].to_json] : [500, result[1].to_json]
       end
     end
   end
