@@ -22,9 +22,11 @@
           %td= device['model']
   %div{:class => "new-line"}
     %button{:type => "submit", :class => "btn btn-success center-block"} Select
-%br
-%strong Chosen Device:&nbsp;
-%em #{session[:device_sn]}
-%br
-%strong Chosen Application Package:&nbsp;
-%em #{session[:package_name]}
+- if session[:device_sn]
+  %br
+  %strong Chosen Device:&nbsp;
+  %em #{session[:device_sn]}
+- if session[:package_name] && !session[:package_name].empty?
+  %br
+  %strong Chosen Application Package:&nbsp;
+  %em #{session[:package_name]}
