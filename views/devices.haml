@@ -38,3 +38,9 @@
 - if session[:device_sn]
   %div{:class => "new-line"}
     %button{:type => "button", :class => "btn btn-primary", :onclick => "takeScreenshot()"} Take Screenshot
+- unless session[:screenshots].empty?
+  %h2 Screenshots
+  %div{:id => "fotoramaContainer", :class => "centeredImgDiv"}
+    %div{:class => "fotorama", :'data-nav' => "thumbs"}
+      - session[:screenshots].each do |screenshot|
+        %img{:src => "img/screenshots/#{screenshot}"}

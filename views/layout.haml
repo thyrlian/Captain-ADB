@@ -9,6 +9,9 @@
     - if defined? @use_jquery_ui
       %script{ :src => '//code.jquery.com/ui/1.11.1/jquery-ui.min.js' }
       %link{ :href => '//code.jquery.com/ui/1.11.1/themes/smoothness/jquery-ui.css', :rel => 'stylesheet' }
+    - if defined? @use_fotorama
+      %script{ :src => '//fotorama.s3.amazonaws.com/4.6.2/fotorama.js' }
+      %link{ :href => '//fotorama.s3.amazonaws.com/4.6.2/fotorama.css', :rel => 'stylesheet' }
     %title Captain ADB
   %body
     %div{:class => "container-fluid"}
