@@ -5,7 +5,7 @@
   function takeScreenshot() {
     $.post('/devices/#{session[:device_sn]}/screenshots');
   }
-%h1 Devices List
+%h2 Devices List
 %button{:type => "button", :class => "btn btn-warning", :style => "float: right;", :onclick => "refresh()"} Refresh
 %form{:role => "form", :action => '/devices/', :method => 'post'}
   %table{:class => "table table-striped table-hover"}
@@ -28,12 +28,13 @@
   %div{:class => "new-line"}
     %button{:type => "submit", :class => "btn btn-success center-block"} Select
 - if session[:device_sn]
-  %button{:type => "button", :class => "btn btn-primary", :onclick => "takeScreenshot()"} Take Screenshot
-- if session[:device_sn]
-  %br
-  %strong Chosen Device:&nbsp;
-  %em #{session[:device_sn]}
+  %div{:class => "new-line"}
+    %strong Chosen Device:&nbsp;
+    %em #{session[:device_sn]}
 - if session[:package_name] && !session[:package_name].empty?
-  %br
-  %strong Chosen Application Package:&nbsp;
-  %em #{session[:package_name]}
+  %div{:class => "new-line"}
+    %strong Chosen Application Package:&nbsp;
+    %em #{session[:package_name]}
+- if session[:device_sn]
+  %div{:class => "new-line"}
+    %button{:type => "button", :class => "btn btn-primary", :onclick => "takeScreenshot()"} Take Screenshot
