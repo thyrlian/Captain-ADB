@@ -1,5 +1,10 @@
 :javascript
-  function refresh() {window.location.reload();}
+  function refresh() {
+    window.location.reload();
+  }
+  function takeScreenshot() {
+    $.post('/devices/#{session[:device_sn]}/screenshots');
+  }
 %h1 Devices List
 %button{:type => "button", :class => "btn btn-warning", :style => "float: right;", :onclick => "refresh()"} Refresh
 %form{:role => "form", :action => '/devices/', :method => 'post'}
@@ -22,6 +27,8 @@
           %td= device['model']
   %div{:class => "new-line"}
     %button{:type => "submit", :class => "btn btn-success center-block"} Select
+- if session[:device_sn]
+  %button{:type => "button", :class => "btn btn-primary", :onclick => "takeScreenshot()"} Take Screenshot
 - if session[:device_sn]
   %br
   %strong Chosen Device:&nbsp;

@@ -13,7 +13,7 @@ module CaptainADB
       end
       
       get '/?' do
-        @use_jquery = true
+        @use_jquery_ui = true
         unless session[:device_sn].nil?
           @installed_packages = list_installed_packages(session[:device_sn])
         else
