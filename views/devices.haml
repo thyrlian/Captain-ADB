@@ -41,6 +41,6 @@
 - unless session[:screenshots].empty?
   %h2 Screenshots
   %div{:id => "fotoramaContainer", :class => "centeredImgDiv"}
-    %div{:class => "fotorama", :'data-nav' => "thumbs"}
+    %div{:class => "fotorama", :'data-nav' => "thumbs", :'data-width' => "50%"}
       - session[:screenshots].each do |screenshot|
         %img{:src => "img/screenshots/#{screenshot}"}

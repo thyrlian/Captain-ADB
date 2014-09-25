@@ -12,5 +12,10 @@
 .centeredImgDiv {
   margin: auto;
   width: 640px;
+  max-width: 100%;
   display: block;
+}
+
+.fotorama__wrap--slide {
+  margin: auto;
 }
