@@ -14,7 +14,7 @@ module CaptainADB
       
       get '/?' do
         @use_fotorama = true
-        session[:screenshots] = get_screenshots_files("#{settings.public_folder}/img/screenshots")
+        settings.screenshot_files = get_screenshots_files(settings.screenshot_dir)
         haml :devices, :locals => {:devices => list_devices_with_details}
       end
       
@@ -28,9 +28,8 @@ module CaptainADB
       end
       
       post '/:device_sn/screenshots' do |device_sn|
-        dir = "#{settings.public_folder}/img/screenshots"
-        result = take_a_screenshot(dir, device_sn)
-        session[:screenshots] = get_screenshots_files(dir)
+        result = take_a_screenshot(settings.screenshot_dir, device_sn)
+        settings.screenshot_files = get_screenshots_files(settings.screenshot_dir)
         result.first ? [201, result[1].to_json] : [500, result[1].to_json]
       end
     end

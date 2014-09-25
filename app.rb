@@ -15,6 +15,8 @@ module CaptainADB
       set :app_file, File.join(root_dir, File.basename(__FILE__))
       set :views, "#{root_dir}/views"
       set :public_folder, "#{root_dir}/public"
+      set :screenshot_dir, "#{settings.public_folder}/img/screenshots"
+      set :screenshot_files, []
       enable :sessions
       register Sinatra::Namespace
       helpers Sinatra::JSON
