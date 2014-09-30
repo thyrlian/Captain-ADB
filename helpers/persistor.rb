@@ -2,7 +2,6 @@ module CaptainADB
   class Persistor
     class << self
       def get_var(name)
-        # class_variable_get("@@#{name.to_s}".intern)
         if list_vars.include?(name.intern)
           class_variable_get("@@#{name.to_s}".intern)
         else
