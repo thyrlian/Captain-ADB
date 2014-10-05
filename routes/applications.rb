@@ -40,8 +40,7 @@ module CaptainADB
       end
       
       delete '/:package_name/?' do
-        content_type :json
-        json 'message' => uninstall_app(params[:package_name]), 'application' => params[:package_name]
+        uninstall_app(params[:package_name]) ? 204 : 404
       end
     end
   end

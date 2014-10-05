@@ -47,11 +47,11 @@ module CaptainADB
     def uninstall_app(package_name)
       result = `adb uninstall #{package_name}`.chomp
       if result == 'Success'
-        'Uninstalled successfully.'
+        return true
       elsif result == 'Failure'
-        'Can not uninstall, app does not exist.'
-      else # - waiting for device -
-        'Please check your device connection.'
+        return false
+      else
+        return false
       end
     end
 
