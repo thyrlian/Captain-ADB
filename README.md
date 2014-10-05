@@ -3,7 +3,13 @@ Captain-ADB
 
 Providing simple web API and view for Android Debug Bridge (adb).  Free your imagination, use it as the way you want.
 
+##Resuirements:
+* bundler (gem install bundler)
+* ruby
+* android SDK, adb in path
+
 ##Setup:
+
 
 1. Clone this project, and go to project directory
 2. Run `bundle install`
