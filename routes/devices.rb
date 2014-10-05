@@ -24,10 +24,12 @@ module CaptainADB
       end
       
       get '/:device_sn/packages.json' do |device_sn|
+        content_type :json
         json list_installed_packages(device_sn)
       end
       
       post '/:device_sn/screenshots' do |device_sn|
+        content_type :json
         result = take_a_screenshot(settings.screenshot_dir, device_sn)
         settings.screenshot_files = get_screenshots_files(settings.screenshot_dir)
         result.first ? [201, result[1].to_json] : [500, result[1].to_json]
