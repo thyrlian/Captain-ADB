@@ -3,10 +3,12 @@ Captain-ADB
 
 Providing simple web API and view for Android Debug Bridge (adb).  Free your imagination, use it as the way you want.
 
-##Resuirements:
-* bundler (gem install bundler)
-* ruby
-* android SDK, adb in path
+##Requirement:
+* Android SDK is configured as environment variable in your ***.bash_profile*** or ***.bashrc***
+  * `ANDROID_HOME=[YourAndroidSdkDir]`
+  * `export PATH=$PATH:$ANDROID_HOME/platform-tools`
+* Ruby ( >= 1.9.3  strongly suggest using [RVM](http://rvm.io/) )
+* Bundler - manages Ruby app's dependencies (`gem install bundler`)
 
 ##Setup:
 
