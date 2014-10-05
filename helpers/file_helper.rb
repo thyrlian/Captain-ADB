@@ -6,7 +6,7 @@ module CaptainADB
       begin
         Dir.foreach(dir) do |f|
           if f.match(regex)
-            screenshots.push(f)
+            screenshots.unshift(f)
           end
         end
       rescue Exception => e
