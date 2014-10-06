@@ -1,22 +1,20 @@
 :javascript
+  var screenshots = #{settings.screenshot_files};
+  var imagesList = [];
+  for (var i = 0; i < screenshots.length; i++) {
+    imagesList.push({img: "img/screenshots/" + screenshots[i]});
+  }
   function refresh() {
     window.location.reload();
   }
   function takeScreenshot() {
-    var screenshots = #{settings.screenshot_files};
     $.post('/devices/#{session[:device_sn]}/screenshots', null, function(data) {
       var regex = /\/(screenshot_[^\/]*\.png)$/;
       var newFile = data['file_path'].match(regex)[1];
-      var imagesList = [];
-      imagesList.push({img: "img/screenshots/" + newFile});
-      for (var i = 0; i < screenshots.length; i++) {
-        imagesList.push({img: "img/screenshots/" + screenshots[i]});
-      }
+      imagesList.unshift({img: "img/screenshots/" + newFile});
       var $fotoramaDiv = $('#fotorama').fotorama();
       var fotorama = $fotoramaDiv.data('fotorama');
       fotorama.load(imagesList);
-      // add data-caption
-      // need a way to update settings.screenshot_files ruby variable
     });
   }
 %h2 Devices List
