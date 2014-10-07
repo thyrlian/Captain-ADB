@@ -2,7 +2,7 @@
   var screenshots = #{settings.screenshot_files};
   var imagesList = [];
   for (var i = 0; i < screenshots.length; i++) {
-    imagesList.push({img: "img/screenshots/" + screenshots[i]});
+    imagesList.push({img: "img/screenshots/" + screenshots[i], caption: screenshots[i].replace(/screenshot_/, '').replace(/\.png/, '')});
   }
   function refresh() {
     window.location.reload();
@@ -11,7 +11,7 @@
     $.post('/devices/#{session[:device_sn]}/screenshots', null, function(data) {
       var regex = /\/(screenshot_[^\/]*\.png)$/;
       var newFile = data['file_path'].match(regex)[1];
-      imagesList.unshift({img: "img/screenshots/" + newFile});
+      imagesList.unshift({img: "img/screenshots/" + newFile, caption: newFile.replace(/screenshot_/, '').replace(/\.png/, '')});
       var $fotoramaDiv = $('#fotorama').fotorama();
       var fotorama = $fotoramaDiv.data('fotorama');
       fotorama.load(imagesList);
