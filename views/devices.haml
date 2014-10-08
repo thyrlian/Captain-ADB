@@ -9,12 +9,13 @@
   });
   function loadDevicesList() {
     $.get('/devices.json', function(data) {
-      $("#tableDevices").empty();
+      $("#devicesList").empty();
       if (data.length > 0) {
-        $("#tableDevices").append($("<thead>").append($("<tr>").append($("<td>").text("")).append($("<td>").text("Serial Number")).append($("<td>").text("Manufacturer")).append($("<td>").text("Brand")).append($("<td>").text("Model")))).append($("<tbody>"));
+        $("#devicesList").append($("<table>").attr("class", "table table-striped table-hover").append($("<thead>").append($("<tr>").append($("<td>").text("")).append($("<td>").text("Serial Number")).append($("<td>").text("Manufacturer")).append($("<td>").text("Brand")).append($("<td>").text("Model")))).append($("<tbody>")));
         data.forEach(function(item) {
-          $("#tableDevices").find("tbody").append($("<tr>").append($("<td>").append($("<input>").attr({name: "device_sn", type: "radio", value: item.sn}))).append($("<td>").text(item.sn)).append($("<td>").text(item.manufacturer)).append($("<td>").text(item.brand)).append($("<td>").text(item.model)));
+          $("#devicesList").find("tbody").append($("<tr>").append($("<td>").append($("<input>").attr({name: "device_sn", type: "radio", value: item.sn}))).append($("<td>").text(item.sn)).append($("<td>").text(item.manufacturer)).append($("<td>").text(item.brand)).append($("<td>").text(item.model)));
         });
+        $("#devicesList").append($("<div>").attr("class", "new-line").append($("<button>").attr({id: "btnSelectDevice", type: "submit", class: "btn btn-success center-block"}).text("Select")));
         $("#btnSelectDevice").attr("disabled", false).css("visibility", "visible");
       } else {
         $("#btnSelectDevice").attr("disabled", true).css("visibility", "hidden");
@@ -32,11 +33,9 @@
     });
   }
 %h2 Devices List
-%button{:type => "button", :class => "btn btn-warning", :style => "float: right;", :onclick => "loadDevicesList()"} Reload
+%button{:type => "button", :class => "btn btn-warning", :onclick => "loadDevicesList()"} Reload
 %form{:role => "form", :action => '/devices/', :method => 'post'}
-  %table{:id => "tableDevices", :class => "table table-striped table-hover"}
-  %div{:class => "new-line"}
-    %button{:id => "btnSelectDevice", :type => "submit", :class => "btn btn-success center-block"} Select
+  %div{:id => "devicesList"}
 - if session[:device_sn]
   %div{:class => "new-line"}
     %strong Chosen Device:&nbsp;
