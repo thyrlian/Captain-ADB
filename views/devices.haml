@@ -4,6 +4,13 @@
   for (var i = 0; i < screenshots.length; i++) {
     imagesList.push({img: "img/screenshots/" + screenshots[i], caption: screenshots[i].replace(/screenshot_/, '').replace(/\.png/, '')});
   }
+  $(document).ready(function() {
+    if ($("#tableDevices tbody").children().length == 0) {
+      $("#btnSelectDevice").attr("disabled", true).css("visibility", "hidden");
+    } else {
+      $("#btnSelectDevice").attr("disabled", false).css("visibility", "visible");
+    }
+  });
   function refresh() {
     window.location.reload();
   }
@@ -20,7 +27,7 @@
 %h2 Devices List
 %button{:type => "button", :class => "btn btn-warning", :style => "float: right;", :onclick => "refresh()"} Refresh
 %form{:role => "form", :action => '/devices/', :method => 'post'}
-  %table{:class => "table table-striped table-hover"}
+  %table{:id => "tableDevices", :class => "table table-striped table-hover"}
     %thead
       %tr
         %td 
@@ -38,7 +45,7 @@
           %td= device['brand']
           %td= device['model']
   %div{:class => "new-line"}
-    %button{:type => "submit", :class => "btn btn-success center-block"} Select
+    %button{:id => "btnSelectDevice", :type => "submit", :class => "btn btn-success center-block"} Select
 - if session[:device_sn]
   %div{:class => "new-line"}
     %strong Chosen Device:&nbsp;
