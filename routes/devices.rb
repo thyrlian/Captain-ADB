@@ -20,7 +20,12 @@ module CaptainADB
       
       get '.json' do
         content_type :json
-        json list_devices_with_details
+        devices = list_devices_with_details
+        if devices.empty?
+          session[:device_sn] = nil
+          session[:package_name] = nil
+        end
+        json devices
       end
       
       get '/:device_sn/packages.json' do |device_sn|
