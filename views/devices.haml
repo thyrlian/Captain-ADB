@@ -5,14 +5,21 @@
     imagesList.push({img: "img/screenshots/" + screenshots[i], caption: screenshots[i].replace(/screenshot_/, '').replace(/\.png/, '')});
   }
   $(document).ready(function() {
-    if ($("#tableDevices tbody").children().length == 0) {
-      $("#btnSelectDevice").attr("disabled", true).css("visibility", "hidden");
-    } else {
-      $("#btnSelectDevice").attr("disabled", false).css("visibility", "visible");
-    }
+    loadDevicesList();
   });
-  function refresh() {
-    window.location.reload();
+  function loadDevicesList() {
+    $.get('/devices.json', function(data) {
+      $("#tableDevices").empty();
+      if (data.length > 0) {
+        $("#tableDevices").append($("<thead>").append($("<tr>").append($("<td>").text("")).append($("<td>").text("Serial Number")).append($("<td>").text("Manufacturer")).append($("<td>").text("Brand")).append($("<td>").text("Model")))).append($("<tbody>"));
+        data.forEach(function(item) {
+          $("#tableDevices").find("tbody").append($("<tr>").append($("<td>").append($("<input>").attr({name: "device_sn", type: "radio", value: item.sn}))).append($("<td>").text(item.sn)).append($("<td>").text(item.manufacturer)).append($("<td>").text(item.brand)).append($("<td>").text(item.model)));
+        });
+        $("#btnSelectDevice").attr("disabled", false).css("visibility", "visible");
+      } else {
+        $("#btnSelectDevice").attr("disabled", true).css("visibility", "hidden");
+      }
+    });
   }
   function takeScreenshot() {
     $.post('/devices/#{session[:device_sn]}/screenshots', null, function(data) {
@@ -25,25 +32,9 @@
     });
   }
 %h2 Devices List
-%button{:type => "button", :class => "btn btn-warning", :style => "float: right;", :onclick => "refresh()"} Refresh
+%button{:type => "button", :class => "btn btn-warning", :style => "float: right;", :onclick => "loadDevicesList()"} Reload
 %form{:role => "form", :action => '/devices/', :method => 'post'}
   %table{:id => "tableDevices", :class => "table table-striped table-hover"}
-    %thead
-      %tr
-        %td 
-        %td Serial Number
-        %td Manufacturer
-        %td Brand
-        %td Model
-    %tbody
-      - devices.each do |device|
-        %tr
-          %td
-            %input{:type => "radio", :name => "device_sn", :value => "#{device['sn']}"}
-          %td= device['sn']
-          %td= device['manufacturer']
-          %td= device['brand']
-          %td= device['model']
   %div{:class => "new-line"}
     %button{:id => "btnSelectDevice", :type => "submit", :class => "btn btn-success center-block"} Select
 - if session[:device_sn]
