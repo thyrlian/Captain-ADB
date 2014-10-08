@@ -15,7 +15,7 @@ module CaptainADB
       get '/?' do
         @use_fotorama = true
         settings.screenshot_files = get_screenshots_files(settings.screenshot_dir)
-        haml :devices, :locals => {:devices => list_devices_with_details}
+        haml :devices
       end
       
       get '.json' do
