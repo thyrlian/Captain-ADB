@@ -13,6 +13,7 @@ module CaptainADB
       end
       
       get '/?' do
+        @use_d3 = true
         @use_fotorama = true
         settings.screenshot_files = get_screenshots_files(settings.screenshot_dir)
         haml :devices
