@@ -33,6 +33,7 @@
       var $fotoramaDiv = $('#fotorama').fotorama();
       var fotorama = $fotoramaDiv.data('fotorama');
       fotorama.load(imagesList);
+      $("#screenshotNotification").fadeIn(1500).delay(500).fadeOut(800);
     });
   }
 %h2 Devices List
@@ -52,6 +53,8 @@
     %button{:id => "btnScreenshot", :type => "button", :class => "btn btn-primary", :onclick => "takeScreenshot()"} Take Screenshot
 - unless settings.screenshot_files.empty?
   %h2 Screenshots
+  %div{:id => "screenshotNotification", :class => "notification"} New screenshot is taken
+  %div{:class => "new-line"}
   %div{:id => "fotoramaContainer", :class => "centeredImgDiv"}
     %div{:id => "fotorama", :class => "fotorama", :'data-nav' => "thumbs", :'data-width' => "50%"}
       - settings.screenshot_files.each do |screenshot|
