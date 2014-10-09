@@ -19,6 +19,9 @@
         $("#btnSelectDevice").attr("disabled", false).css("visibility", "visible");
       } else {
         $("#btnSelectDevice").attr("disabled", true).css("visibility", "hidden");
+        $("#chosenDevice").empty();
+        $("#chosenPackage").empty();
+        $("#btnScreenshot").remove();
       }
     });
   }
@@ -37,16 +40,16 @@
 %form{:role => "form", :action => '/devices/', :method => 'post'}
   %div{:id => "devicesList"}
 - if session[:device_sn]
-  %div{:class => "new-line"}
+  %div{:id => "chosenDevice", :class => "new-line"}
     %strong Chosen Device:&nbsp;
     %em #{session[:device_sn]}
 - if session[:package_name] && !session[:package_name].empty?
-  %div{:class => "new-line"}
+  %div{:id => "chosenPackage", :class => "new-line"}
     %strong Chosen Application Package:&nbsp;
     %em #{session[:package_name]}
 - if session[:device_sn]
   %div{:class => "new-line"}
-    %button{:type => "button", :class => "btn btn-primary", :onclick => "takeScreenshot()"} Take Screenshot
+    %button{:id => "btnScreenshot", :type => "button", :class => "btn btn-primary", :onclick => "takeScreenshot()"} Take Screenshot
 - unless settings.screenshot_files.empty?
   %h2 Screenshots
   %div{:id => "fotoramaContainer", :class => "centeredImgDiv"}
