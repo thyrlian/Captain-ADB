@@ -21,13 +21,7 @@ module CaptainADB
         end
         haml :applications
       end
-    
-      get '/uninstall/?' do
-        execute_if_package_name_exists_else_show_flash do |package_name|
-          uninstall_app(package_name)
-        end
-      end
-
+      
       get '/clear/?' do
         execute_if_package_name_exists_else_show_flash do |package_name|
           clear_app(package_name)
@@ -37,10 +31,6 @@ module CaptainADB
       post '/:package_name/?' do
         content_type :json
         json 'message' => 'Application successfully designated.', 'application' => params[:package_name]
-      end
-      
-      delete '/:package_name/?' do
-        uninstall_app(params[:package_name]) ? 204 : 404
       end
     end
   end
