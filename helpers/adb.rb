@@ -44,8 +44,9 @@ module CaptainADB
       return [true, {'file_path' => file_path}]
     end
 
-    def uninstall_app(package_name)
-      result = `adb uninstall #{package_name}`.chomp
+    def uninstall_app(package_name, device_sn = nil)
+      cmd = PrivateMethods.synthesize_command("adb uninstall #{package_name}", device_sn)
+      result = `#{cmd}`.chomp
       if result == 'Success'
         return true
       elsif result == 'Failure'
