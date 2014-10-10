@@ -56,8 +56,9 @@ module CaptainADB
       end
     end
 
-    def clear_app(package_name)
-      result = `adb shell pm clear #{package_name}`.chomp
+    def clear_app(package_name, device_sn = nil)
+      cmd = PrivateMethods.synthesize_command("adb shell pm clear #{package_name}", device_sn)
+      result = `#{cmd}`.chomp
       if result == 'Success'
         'Cleared app\'s data & cache successfully.'
       elsif result == 'Failed'
