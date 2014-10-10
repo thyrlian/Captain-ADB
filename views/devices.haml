@@ -8,7 +8,7 @@
     loadDevicesList();
   });
   function loadDevicesList() {
-    $.get('/devices.json', function(data) {
+    $.get('/api/devices.json', function(data) {
       $("#devicesList").empty();
       if (data.length > 0) {
         $("#devicesList").append($("<table>").attr("class", "table table-striped table-hover").append($("<thead>").append($("<tr>").append($("<td>").text("")).append($("<td>").text("Serial Number")).append($("<td>").text("Manufacturer")).append($("<td>").text("Brand")).append($("<td>").text("Model")))).append($("<tbody>")));
@@ -27,7 +27,7 @@
   }
   function deletePackage() {
     $.ajax({
-      url: '/devices/#{session[:device_sn]}/packages/#{session[:package_name]}/',
+      url: '/api/devices/#{session[:device_sn]}/packages/#{session[:package_name]}/',
       type: 'DELETE',
       success: function(result) {alert('Application #{session[:package_name]} is removed');},
       error: function(result) {alert('Can not uninstall application #{session[:package_name]}');}
@@ -35,14 +35,14 @@
   }
   function deletePackageData() {
     $.ajax({
-      url: '/devices/#{session[:device_sn]}/packages/#{session[:package_name]}/data/',
+      url: '/api/devices/#{session[:device_sn]}/packages/#{session[:package_name]}/data/',
       type: 'DELETE',
       success: function(result) {alert('Data and cache for application #{session[:package_name]} are removed');},
       error: function(result) {alert('Can not remove data or cache for application #{session[:package_name]}');}
     });
   }
   function takeScreenshot() {
-    $.post('/devices/#{session[:device_sn]}/screenshots', null, function(data) {
+    $.post('/api/devices/#{session[:device_sn]}/screenshots', null, function(data) {
       var regex = /\/(screenshot_[^\/]*\.png)$/;
       var newFile = data['file_path'].match(regex)[1];
       imagesList.unshift({img: "img/screenshots/" + newFile, caption: newFile.replace(/screenshot_/, '').replace(/\.png/, '')});

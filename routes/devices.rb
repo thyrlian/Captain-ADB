@@ -6,19 +6,7 @@ module CaptainADB
     include ADB
     include FileHelper
     
-    namespace '/devices' do
-      post '/?' do
-        session[:device_sn] = params[:device_sn]
-        redirect '/applications'
-      end
-      
-      get '/?' do
-        @use_d3 = true
-        @use_fotorama = true
-        settings.screenshot_files = get_screenshots_files(settings.screenshot_dir)
-        haml :devices
-      end
-      
+    namespace '/api/devices' do
       get '.json' do
         content_type :json
         devices = list_devices_with_details
@@ -47,6 +35,20 @@ module CaptainADB
         result = take_a_screenshot(settings.screenshot_dir, device_sn)
         settings.screenshot_files = get_screenshots_files(settings.screenshot_dir)
         result.first ? [201, result[1].to_json] : [500, result[1].to_json]
+      end
+    end
+    
+    namespace '/devices' do
+      post '/?' do
+        session[:device_sn] = params[:device_sn]
+        redirect '/applications'
+      end
+      
+      get '/?' do
+        @use_d3 = true
+        @use_fotorama = true
+        settings.screenshot_files = get_screenshots_files(settings.screenshot_dir)
+        haml :devices
       end
     end
   end
