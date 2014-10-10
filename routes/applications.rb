@@ -22,12 +22,6 @@ module CaptainADB
         haml :applications
       end
       
-      get '/clear/?' do
-        execute_if_package_name_exists_else_show_flash do |package_name|
-          clear_app(package_name)
-        end
-      end
-      
       post '/:package_name/?' do
         content_type :json
         json 'message' => 'Application successfully designated.', 'application' => params[:package_name]

@@ -33,6 +33,14 @@
       error: function(result) {alert('Can not uninstall application #{session[:package_name]}');}
     });
   }
+  function deletePackageData() {
+    $.ajax({
+      url: '/devices/#{session[:device_sn]}/packages/#{session[:package_name]}/data/',
+      type: 'DELETE',
+      success: function(result) {alert('Data and cache for application #{session[:package_name]} are removed');},
+      error: function(result) {alert('Can not remove data or cache for application #{session[:package_name]}');}
+    });
+  }
   function takeScreenshot() {
     $.post('/devices/#{session[:device_sn]}/screenshots', null, function(data) {
       var regex = /\/(screenshot_[^\/]*\.png)$/;
@@ -58,6 +66,8 @@
     %em #{session[:package_name]}
   %div{:class => "new-line"}
     %button{:id => "btnDeletePackage", :type => "button", :class => "btn btn-danger", :onclick => "deletePackage()"} Delete Application
+  %div{:class => "new-line"}
+    %button{:id => "btnDeletePackageData", :type => "button", :class => "btn btn-danger", :onclick => "deletePackageData()"} Remove App Data & Cache
 - if session[:device_sn]
   %div{:class => "new-line"}
     %button{:id => "btnScreenshot", :type => "button", :class => "btn btn-primary", :onclick => "takeScreenshot()"} Take Screenshot

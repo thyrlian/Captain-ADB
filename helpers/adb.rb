@@ -60,11 +60,11 @@ module CaptainADB
       cmd = PrivateMethods.synthesize_command("adb shell pm clear #{package_name}", device_sn)
       result = `#{cmd}`.chomp
       if result == 'Success'
-        'Cleared app\'s data & cache successfully.'
+        return true
       elsif result == 'Failed'
-        'Can not clear, app does not exist.'
-      else # - waiting for device -
-        'Please check your device connection.'
+        return false
+      else
+        return false
       end
     end
 

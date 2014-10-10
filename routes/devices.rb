@@ -38,6 +38,10 @@ module CaptainADB
         uninstall_app(params[:package_name], params[:device_sn]) ? 204 : 404
       end
       
+      delete '/:device_sn/packages/:package_name/data/?' do
+        clear_app(params[:package_name], params[:device_sn]) ? 204 : 404
+      end
+      
       post '/:device_sn/screenshots' do |device_sn|
         content_type :json
         result = take_a_screenshot(settings.screenshot_dir, device_sn)
