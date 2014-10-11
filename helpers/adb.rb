@@ -1,7 +1,7 @@
 require_relative 'io_stream'
 
 module CaptainADB
-  module ADB    
+  module ADB
     def list_devices
       list = `adb devices`
       devices = list.split("\n")[1..-1].inject([]) do |devices, device|
