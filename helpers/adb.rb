@@ -47,20 +47,20 @@ module CaptainADB
     def get_app_info(package_name, device_sn = nil)
       cmd = PrivateMethods.synthesize_command("adb shell dumpsys package #{package_name}", device_sn)
       result = `#{cmd}`.chomp.match(/Packages:(.*|\n?)+\z/)[0].gsub(/Packages:\r?\n/, '').gsub(/^.*Package.*\r?\n/, '')
-      info = {}
+      info = []
       number_of_leading_spaces = result.match(/^(\s+)/)[1].size
       result.gsub(/^[^=]+:.*$/, '').gsub(/^[^=:]*$/, '').gsub(/\s+(\w+=)/, '→\1').gsub(/\r?\n/, '').split('→').reject(&:empty?).map(&:chomp).each do |x|
         pair = x.split('=')
         key = pair.first
         value = pair.last
         if value.match(/\[.*\]/)
-          info[key] = value.split(/\[|\]|\s|,/).reject(&:empty?)
+          info.push({key => value.split(/\[|\]|\s|,/).reject(&:empty?)})
         else
-          info[key] = value
+          info.push({key => value})
         end
       end
       result.gsub(/\r\n^\s{#{number_of_leading_spaces + 1},}/, ' ').scan(/^\s{#{number_of_leading_spaces}}([^=]*?):\s+(.*)/).each do |x|
-        info[x.first] = x.last.chomp.split(/\s+/)
+        info.push({x.first => x.last.chomp.split(/\s+/)})
       end
       info
     end
