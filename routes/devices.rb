@@ -22,6 +22,11 @@ module CaptainADB
         json list_installed_packages(device_sn)
       end
       
+      get '/:device_sn/packages/:package_name/?' do
+        content_type :json
+        json get_app_info(params[:package_name], params[:device_sn])
+      end
+      
       delete '/:device_sn/packages/:package_name/?' do
         uninstall_app(params[:package_name], params[:device_sn]) ? 204 : 404
       end
