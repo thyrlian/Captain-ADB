@@ -11,6 +11,9 @@
       %link{ :href => '/css/jquery/jquery-ui.css', :rel => 'stylesheet' }
     - if defined? @use_d3
       %script{ :src => '/js/d3/d3.v3.min.js', :charset => 'utf-8' }
+    - if defined? @use_pnotify
+      %script{ :src => '/js/pnotify/pnotify.custom.min.js' }
+      %link{ :href => '/css/pnotify/pnotify.custom.min.css', :rel => 'stylesheet', :media => 'all' }
     - if defined? @use_fotorama
       %script{ :src => '/js/fotorama/fotorama.js' }
       %link{ :href => '/css/fotorama/fotorama.css', :rel => 'stylesheet' }

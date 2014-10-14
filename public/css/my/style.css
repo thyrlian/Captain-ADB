@@ -19,14 +19,3 @@
 .fotorama__wrap--slide {
   margin: auto;
 }
-
-.notification {
-  display: none;
-  background-color: #a4c739;
-  text-align: center;
-  margin-left: auto;
-  margin-right: auto;
-  width: 40%;
-  font-family: Helvetica;
-  font-size: 1.5em;
-}

@@ -1,4 +1,5 @@
 :javascript
+  PNotify.prototype.options.styling = "bootstrap3";
   var screenshots = #{settings.screenshot_files};
   var imagesList = [];
   for (var i = 0; i < screenshots.length; i++) {
@@ -29,16 +30,64 @@
     $.ajax({
       url: '/api/devices/#{session[:device_sn]}/packages/#{session[:package_name]}/',
       type: 'DELETE',
-      success: function(result) {alert('Application #{session[:package_name]} is removed');},
-      error: function(result) {alert('Can not uninstall application #{session[:package_name]}');}
+      success: function(result) {
+        new PNotify({
+          type: 'success',
+          title: false,
+          text: 'Application #{session[:package_name]} is removed',
+          icon: false,
+          shadow: true,
+          animation: 'fade',
+          animate_speed: 'slow',
+          delay: 2000,
+          remove: true
+        });
+      },
+      error: function(result) {
+        new PNotify({
+          type: 'error',
+          title: false,
+          text: 'Can not uninstall application #{session[:package_name]}',
+          icon: false,
+          shadow: true,
+          animation: 'fade',
+          animate_speed: 'slow',
+          delay: 2000,
+          remove: true
+        });
+      }
     });
   }
   function deletePackageData() {
     $.ajax({
       url: '/api/devices/#{session[:device_sn]}/packages/#{session[:package_name]}/data/',
       type: 'DELETE',
-      success: function(result) {alert('Data and cache for application #{session[:package_name]} are removed');},
-      error: function(result) {alert('Can not remove data or cache for application #{session[:package_name]}');}
+      success: function(result) {
+        new PNotify({
+          type: 'success',
+          title: false,
+          text: 'Data and cache for application #{session[:package_name]} are removed',
+          icon: false,
+          shadow: true,
+          animation: 'fade',
+          animate_speed: 'slow',
+          delay: 2000,
+          remove: true
+        });
+      },
+      error: function(result) {
+        new PNotify({
+          type: 'error',
+          title: false,
+          text: 'Can not remove data or cache for application #{session[:package_name]}',
+          icon: false,
+          shadow: true,
+          animation: 'fade',
+          animate_speed: 'slow',
+          delay: 2000,
+          remove: true
+        });
+      }
     });
   }
   function takeScreenshot() {
@@ -49,7 +98,17 @@
       var $fotoramaDiv = $('#fotorama').fotorama();
       var fotorama = $fotoramaDiv.data('fotorama');
       fotorama.load(imagesList);
-      $("#screenshotNotification").fadeIn(1500).delay(500).fadeOut(800);
+      new PNotify({
+        type: 'success',
+        title: false,
+        text: 'New screenshot is taken',
+        icon: false,
+        shadow: true,
+        animation: 'fade',
+        animate_speed: 'slow',
+        delay: 2000,
+        remove: true
+      });
     });
   }
 %h2 Devices List
@@ -73,8 +132,6 @@
     %button{:id => "btnScreenshot", :type => "button", :class => "btn btn-primary", :onclick => "takeScreenshot()"} Take Screenshot
 - unless settings.screenshot_files.empty?
   %h2 Screenshots
-  %div{:id => "screenshotNotification", :class => "notification"} New screenshot is taken
-  %div{:class => "new-line"}
   %div{:id => "fotoramaContainer", :class => "centeredImgDiv"}
     %div{:id => "fotorama", :class => "fotorama", :'data-nav' => "thumbs", :'data-width' => "50%"}
       - settings.screenshot_files.each do |screenshot|
