@@ -2,18 +2,18 @@
 %html{:lang => "en"}
   %head
     %meta{ :charset => "utf-8" }
-    %script{ :src => '//code.jquery.com/jquery-1.11.1.min.js' }
-    %script{ :src => '/js/bootstrap.min.js' }
-    %link{ :href => '/css/bootstrap.css', :rel => 'stylesheet' }
-    %link{ :href => '/css/style.css', :rel => 'stylesheet' }
+    %script{ :src => '/js/jquery/jquery-1.11.1.min.js' }
+    %script{ :src => '/js/bootstrap/bootstrap.min.js' }
+    %link{ :href => '/css/bootstrap/bootstrap.css', :rel => 'stylesheet' }
+    %link{ :href => '/css/my/style.css', :rel => 'stylesheet' }
     - if defined? @use_jquery_ui
-      %script{ :src => '//code.jquery.com/ui/1.11.1/jquery-ui.min.js' }
-      %link{ :href => '//code.jquery.com/ui/1.11.1/themes/smoothness/jquery-ui.css', :rel => 'stylesheet' }
+      %script{ :src => '/js/jquery/jquery-ui.min.js' }
+      %link{ :href => '/css/jquery/jquery-ui.css', :rel => 'stylesheet' }
     - if defined? @use_d3
-      %script{ :src => '//d3js.org/d3.v3.min.js', :charset => 'utf-8' }
+      %script{ :src => '/js/d3/d3.v3.min.js', :charset => 'utf-8' }
     - if defined? @use_fotorama
-      %script{ :src => '//fotorama.s3.amazonaws.com/4.6.2/fotorama.js' }
-      %link{ :href => '//fotorama.s3.amazonaws.com/4.6.2/fotorama.css', :rel => 'stylesheet' }
+      %script{ :src => '/js/fotorama/fotorama.js' }
+      %link{ :href => '/css/fotorama/fotorama.css', :rel => 'stylesheet' }
     %title Captain ADB
   %body
     %div{:class => "container-fluid"}
