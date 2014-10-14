@@ -8,6 +8,19 @@
   $(document).ready(function() {
     loadDevicesList();
   });
+  function showNotification(text, type) {
+    new PNotify({
+      type: type,
+      title: false,
+      text: text,
+      icon: false,
+      shadow: true,
+      animation: 'fade',
+      animate_speed: 'slow',
+      delay: 2000,
+      remove: true
+    });
+  }
   function loadDevicesList() {
     $.get('/api/devices.json', function(data) {
       $("#devicesList").empty();
@@ -30,64 +43,16 @@
     $.ajax({
       url: '/api/devices/#{session[:device_sn]}/packages/#{session[:package_name]}/',
       type: 'DELETE',
-      success: function(result) {
-        new PNotify({
-          type: 'success',
-          title: false,
-          text: 'Application #{session[:package_name]} is removed',
-          icon: false,
-          shadow: true,
-          animation: 'fade',
-          animate_speed: 'slow',
-          delay: 2000,
-          remove: true
-        });
-      },
-      error: function(result) {
-        new PNotify({
-          type: 'error',
-          title: false,
-          text: 'Can not uninstall application #{session[:package_name]}',
-          icon: false,
-          shadow: true,
-          animation: 'fade',
-          animate_speed: 'slow',
-          delay: 2000,
-          remove: true
-        });
-      }
+      success: function(result) { showNotification('Application #{session[:package_name]} is uninstalled', 'success'); },
+      error: function(result) { showNotification('Can not uninstall application #{session[:package_name]}', 'error'); }
     });
   }
   function deletePackageData() {
     $.ajax({
       url: '/api/devices/#{session[:device_sn]}/packages/#{session[:package_name]}/data/',
       type: 'DELETE',
-      success: function(result) {
-        new PNotify({
-          type: 'success',
-          title: false,
-          text: 'Data and cache for application #{session[:package_name]} are removed',
-          icon: false,
-          shadow: true,
-          animation: 'fade',
-          animate_speed: 'slow',
-          delay: 2000,
-          remove: true
-        });
-      },
-      error: function(result) {
-        new PNotify({
-          type: 'error',
-          title: false,
-          text: 'Can not remove data or cache for application #{session[:package_name]}',
-          icon: false,
-          shadow: true,
-          animation: 'fade',
-          animate_speed: 'slow',
-          delay: 2000,
-          remove: true
-        });
-      }
+      success: function(result) { showNotification('Data and cache for application #{session[:package_name]} are removed', 'success'); },
+      error: function(result) { showNotification('Can not remove data or cache for application #{session[:package_name]}', 'error'); }
     });
   }
   function takeScreenshot() {
@@ -98,17 +63,7 @@
       var $fotoramaDiv = $('#fotorama').fotorama();
       var fotorama = $fotoramaDiv.data('fotorama');
       fotorama.load(imagesList);
-      new PNotify({
-        type: 'success',
-        title: false,
-        text: 'New screenshot is taken',
-        icon: false,
-        shadow: true,
-        animation: 'fade',
-        animate_speed: 'slow',
-        delay: 2000,
-        remove: true
-      });
+      showNotification('New screenshot is taken', 'success');
     });
   }
 %h2 Devices List
