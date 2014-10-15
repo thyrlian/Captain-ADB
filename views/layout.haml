@@ -2,21 +2,21 @@
 %html{:lang => "en"}
   %head
     %meta{ :charset => "utf-8" }
-    %script{ :src => '/js/jquery/jquery-1.11.1.min.js' }
-    %script{ :src => '/js/bootstrap/bootstrap.min.js' }
-    %link{ :href => '/css/bootstrap/bootstrap.css', :rel => 'stylesheet' }
-    %link{ :href => '/css/my/style.css', :rel => 'stylesheet' }
+    %script{ :src => '/plugins/jquery/jquery-1.11.1.min.js' }
+    %script{ :src => '/plugins/bootstrap/js/bootstrap.min.js' }
+    %link{ :href => '/plugins/bootstrap/css/bootstrap.min.css', :rel => 'stylesheet' }
+    %link{ :href => '/my/css/style.css', :rel => 'stylesheet' }
     - if defined? @use_jquery_ui
-      %script{ :src => '/js/jquery/jquery-ui.min.js' }
-      %link{ :href => '/css/jquery/jquery-ui.css', :rel => 'stylesheet' }
+      %script{ :src => '/plugins/jquery/jquery-ui.min.js' }
+      %link{ :href => '/plugins/jquery/jquery-ui.css', :rel => 'stylesheet' }
     - if defined? @use_d3
-      %script{ :src => '/js/d3/d3.v3.min.js', :charset => 'utf-8' }
+      %script{ :src => '/plugins/d3/d3.v3.min.js', :charset => 'utf-8' }
     - if defined? @use_pnotify
-      %script{ :src => '/js/pnotify/pnotify.custom.min.js' }
-      %link{ :href => '/css/pnotify/pnotify.custom.min.css', :rel => 'stylesheet', :media => 'all' }
+      %script{ :src => '/plugins/pnotify/pnotify.custom.min.js' }
+      %link{ :href => '/plugins/pnotify/pnotify.custom.min.css', :rel => 'stylesheet', :media => 'all' }
     - if defined? @use_fotorama
-      %script{ :src => '/js/fotorama/fotorama.js' }
-      %link{ :href => '/css/fotorama/fotorama.css', :rel => 'stylesheet' }
+      %script{ :src => '/plugins/fotorama/fotorama.js' }
+      %link{ :href => '/plugins/fotorama/fotorama.css', :rel => 'stylesheet' }
     %title Captain ADB
   %body
     %div{:class => "container-fluid"}
