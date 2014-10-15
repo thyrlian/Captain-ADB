@@ -27,7 +27,7 @@
       if (data.length > 0) {
         $("#devicesList").append($("<table>").attr("class", "table table-striped table-hover").append($("<thead>").append($("<tr>").append($("<td>").text("")).append($("<td>").text("Serial Number")).append($("<td>").text("Manufacturer")).append($("<td>").text("Brand")).append($("<td>").text("Model")))).append($("<tbody>")));
         data.forEach(function(item) {
-          $("#devicesList").find("tbody").append($("<tr>").append($("<td>").append($("<input>").attr({name: "device_sn", type: "radio", value: item.sn}))).append($("<td>").text(item.sn)).append($("<td>").text(item.manufacturer)).append($("<td>").text(item.brand)).append($("<td>").text(item.model)));
+          $("#devicesList").find("tbody").append($("<tr>").click(function() { $(this).find("td input:radio").prop("checked", true); }).append($("<td>").append($("<input>").attr({name: "device_sn", type: "radio", value: item.sn}))).append($("<td>").text(item.sn)).append($("<td>").text(item.manufacturer)).append($("<td>").text(item.brand)).append($("<td>").text(item.model)));
         });
         $("#devicesList").append($("<div>").attr("class", "new-line").append($("<button>").attr({id: "btnSelectDevice", type: "submit", class: "btn btn-success center-block"}).text("Select")));
         $("#btnSelectDevice").attr("disabled", false).css("visibility", "visible");
