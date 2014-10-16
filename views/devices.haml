@@ -21,6 +21,10 @@
       remove: true
     });
   }
+  function selectDevice() {
+    var device = '#{session[:device_sn]}';
+    $('input[name=device_sn][value="'+device+'"]').click();
+  }
   function loadDevicesList() {
     $.get('/api/devices.json', function(data) {
       $("#devicesList").empty();
@@ -37,6 +41,7 @@
         $("#chosenPackage").empty();
         $("#btnScreenshot").remove();
       }
+      selectDevice();
     });
   }
   function deletePackage() {
