@@ -88,6 +88,12 @@ module CaptainADB
         return false
       end
     end
+    
+    def is_device_rooted?(device_sn = nil)
+      cmd = PrivateMethods.synthesize_command("adb shell 'which su; echo $?'", device_sn)
+      exit_status = `#{cmd}`.split(/\r\n/)[1].to_i
+      return exit_status == 0
+    end
 
     def start_monkey_test(package_name, numbers_of_events = 50000)
       # `adb shell monkey -p #{package_name} -v #{numbers_of_events}`
