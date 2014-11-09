@@ -33,7 +33,7 @@
         data.forEach(function(item) {
           $("#devicesList").find("tbody").append($("<tr>").click(function() { $(this).find("td input:radio").prop("checked", true); }).append($("<td>").append($("<input>").attr({name: "device_sn", type: "radio", value: item.sn}))).append($("<td>").text(item.sn)).append($("<td>").text(item.manufacturer)).append($("<td>").text(item.brand)).append($("<td>").text(item.model)));
         });
-        $("#devicesList").append($("<div>").attr("class", "new-line").append($("<button>").attr({id: "btnSelectDevice", type: "submit", class: "btn btn-success center-block"}).text("Select")));
+        $("#devicesList").append($("<div>").attr("class", "new-line").append($("<button>").attr({id: "btnSelectDevice", type: "submit", class: "btn btn-success center-block"}).text("Select Device")));
         $("#btnSelectDevice").attr("disabled", false).css("visibility", "visible");
       } else {
         $("#btnSelectDevice").attr("disabled", true).css("visibility", "hidden");
@@ -76,8 +76,9 @@
     %img{:src => "img/captain_android.png"}
 %div{:class => "top-banner-text"}
   %h1{:class => "terminal"} Captain adb
-%h2 Devices List
-%button{:type => "button", :class => "btn btn-warning", :onclick => "loadDevicesList()"} Reload
+%div{:class => "new-line"}
+%h2{:class => "vertical-center", :style => "display: inline-block;"} Devices List
+%button{:type => "button", :class => "btn btn-warning vertical-center", :onclick => "loadDevicesList()", :style => "display: inline-block; margin-left: 10px;"} ↻
 %form{:role => "form", :action => '/devices/', :method => 'post'}
   %div{:id => "devicesList"}
 - if session[:device_sn]

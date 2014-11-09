@@ -30,6 +30,12 @@
   border-color: #eed3d7;
 }
 
+.vertical-center {
+  position: relative;
+  top: 50%;
+  transform: translateY(-50%);
+}
+
 .centeredImgDiv {
   margin: auto;
   width: 640px;
