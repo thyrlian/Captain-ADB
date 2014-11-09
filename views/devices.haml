@@ -71,6 +71,11 @@
       showNotification('New screenshot is taken', 'success');
     });
   }
+%div{:class => "top-banner-logo"}
+  %a{:href => "/"}
+    %img{:src => "img/captain_android.png"}
+%div{:class => "top-banner-text"}
+  %h1{:class => "terminal"} Captain adb
 %h2 Devices List
 %button{:type => "button", :class => "btn btn-warning", :onclick => "loadDevicesList()"} Reload
 %form{:role => "form", :action => '/devices/', :method => 'post'}

@@ -2,6 +2,27 @@
   margin-top: 10px;
 }
 
+.top-banner-logo {
+  display: inline-block;
+  margin-bottom: 10px;
+  margin-left: 10px;
+  margin-right: 10px;
+  margin-top: 10px;
+}
+
+.top-banner-text {
+  display: inline-block;
+  height: 100%;
+  vertical-align: bottom;
+  margin-left: 50px;
+}
+
+.terminal {
+  font-family: Andale Mono, Courier New, Courier;
+  color: #a4c739;
+  font-size: 60px;
+}
+
 .alert-danger,
   .alert-error {
   color: #b94a48;
