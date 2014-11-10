@@ -22,8 +22,8 @@ Providing simple web API and view for Android Debug Bridge (adb).  Free your ima
 ###Schema
 All API is accessed from the `http://yourdomain.com/api/`, and all data is sent and received as JSON.
 ###REST APIs
-GET `devices.json`  
-GET `devices/:device_sn/packages.json`  
+GET `devices`  
+GET `devices/:device_sn/packages`  
 GET `devices/:device_sn/packages/:package_name`  
 DELETE `devices/:device_sn/packages/:package_name`  
 DELETE `devices/:device_sn/packages/:package_name/data`  

@@ -8,7 +8,7 @@ module CaptainADB
     include Sinatra::SessionHelper
     
     namespace '/api/devices' do
-      get '.json' do
+      get '/?' do
         content_type :json
         devices = list_devices_with_details
         if devices.empty?
@@ -18,7 +18,7 @@ module CaptainADB
         json devices
       end
       
-      get '/:device_sn/packages.json' do |device_sn|
+      get '/:device_sn/packages/?' do |device_sn|
         content_type :json
         json list_installed_packages(device_sn)
       end
@@ -36,7 +36,7 @@ module CaptainADB
         clear_app(params[:package_name], params[:device_sn]) ? 204 : 404
       end
       
-      post '/:device_sn/screenshots' do |device_sn|
+      post '/:device_sn/screenshots/?' do |device_sn|
         content_type :json
         result = take_a_screenshot(settings.screenshot_dir, device_sn)
         settings.screenshot_files = get_screenshots_files(settings.screenshot_dir)
