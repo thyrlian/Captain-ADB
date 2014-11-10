@@ -84,15 +84,16 @@
 %div{:class => "new-line"}
 %h2{:class => "vertical-center", :style => "display: inline-block;"} Devices List
 %button{:type => "button", :class => "btn btn-warning vertical-center", :onclick => "loadDevicesList()", :style => "display: inline-block; margin-left: 10px;"} ↻
-%form{:role => "form", :action => '/devices/', :method => 'post'}
+%form{:role => "form", :action => "/devices/", :method => "post"}
   %div{:id => "devicesList"}
-%form{:role => "form", :action => '/api/applications/', :method => 'post'}
-  %div{:class => "form-group"}
-  %label{:for => "packageName"} Application Package Name
-  %div{:class => "new-line ui-widget"}
-    %input{:type => "text", :class => "form-control", :id => "packageName", :name => "package_name", :placeholder => "com.example.application"}
-  %div{:class => "new-line"}
-    %button{:type => "submit", :class => "btn btn-success center-block"} Select Package
+%form{:role => "form", :action => "/devices/#{session[:device_sn]}/packages/", :method => "post"}
+  - if session[:device_sn]
+    %div{:id => "packagesList", :class => "form-group"}
+    %label{:for => "packageName"} Application Package Name
+    %div{:class => "new-line ui-widget"}
+      %input{:type => "text", :class => "form-control", :id => "packageName", :name => "package_name", :placeholder => "com.example.application"}
+    %div{:class => "new-line"}
+      %button{:type => "submit", :class => "btn btn-success center-block"} Select Package
 - if session[:device_sn]
   %div{:id => "chosenDevice", :class => "new-line"}
     %strong Chosen Device:&nbsp;

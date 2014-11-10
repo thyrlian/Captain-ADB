@@ -5,6 +5,7 @@ module CaptainADB
     register Sinatra::Namespace
     include ADB
     include FileHelper
+    include Sinatra::SessionHelper
     
     namespace '/api/devices' do
       get '.json' do
@@ -46,7 +47,12 @@ module CaptainADB
     namespace '/devices' do
       post '/?' do
         session[:device_sn] = params[:device_sn]
-        redirect '/applications'
+        redirect '/'
+      end
+      
+      post '/:device_sn/packages/?' do
+        session[:package_name] = params[:package_name]
+        redirect '/'
       end
       
       get '/?' do
