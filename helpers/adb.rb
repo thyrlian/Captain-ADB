@@ -89,6 +89,12 @@ module CaptainADB
       end
     end
     
+    # Precondition: device needs to be rooted
+    def change_language(language, country, device_sn = nil)
+      cmd = PrivateMethods.synthesize_command("adb shell \"su -c 'setprop persist.sys.language #{language}; setprop persist.sys.country #{country}; stop; sleep 5; start'\"", device_sn)
+      `#{cmd}`
+    end
+    
     def is_device_rooted?(device_sn = nil)
       cmd = PrivateMethods.synthesize_command("adb shell 'which su; echo $?'", device_sn)
       exit_status = `#{cmd}`.split(/\r\n/)[1].to_i

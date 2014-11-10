@@ -42,6 +42,24 @@ module CaptainADB
         settings.screenshot_files = get_screenshots_files(settings.screenshot_dir)
         result.first ? [201, result[1].to_json] : [500, result[1].to_json]
       end
+      
+      put '/:device_sn/?' do |device_sn|
+        request.body.rewind
+        json = request.body.read.to_s
+        if json && json.length >= 2
+          req_data = JSON.parse(json)
+          language = req_data['language']
+          country = req_data['country']
+          if language && country
+            change_language(language, country, device_sn)
+            return 202
+          else
+            return 400
+          end
+        else
+          return 400
+        end
+      end
     end
     
     namespace '/devices' do
