@@ -31,7 +31,7 @@
     $('#packageName').autocomplete({ source: installed_packages });
   }
   function loadDevicesList() {
-    $.get('/api/devices.json', function(data) {
+    $.get('/api/devices', function(data) {
       $("#devicesList").empty();
       if (data.length > 0) {
         $("#devicesList").append($("<table>").attr("class", "table table-striped table-hover").append($("<thead>").append($("<tr>").append($("<td>").text("")).append($("<td>").text("Serial Number")).append($("<td>").text("Manufacturer")).append($("<td>").text("Brand")).append($("<td>").text("Model")))).append($("<tbody>")));
