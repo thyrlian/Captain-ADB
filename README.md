@@ -35,3 +35,4 @@ PUT `devices/:device_sn`
     "country": "us"
 }
 ```
+Special thanks to my frontend specialist: [**Miguel**](http://henrique.pt/) Twitter:[@lordcracker](https://twitter.com/lordcracker) Github:[@ellite](https://github.com/ellite)
