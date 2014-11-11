@@ -20,5 +20,11 @@
     %title Captain ADB
     %link{ :rel => 'icon', :href => '/img/favicon.png' }
   %body
+    %header{:class => "top-banner"}
+      %div{:class => "top-banner-logo"}
+        %a{:href => "/"}
+          %img{:src => "img/captain_android.png"}
+      %div{:class => "top-banner-text"}
+        %h1{:class => "terminal"} Captain adb
     %div{:class => "container-fluid"}
       = yield

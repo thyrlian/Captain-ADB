@@ -7,7 +7,14 @@
   }
   $(document).ready(function() {
     loadDevicesList();
+    setMarginOfContent();
   });
+  $(window).on('resize', function() {
+    setMarginOfContent();
+  });
+  function setMarginOfContent() {
+    $('.container-fluid').css('marginTop', $('.top-banner').height());
+  }
   function showNotification(text, type) {
     new PNotify({
       type: type,
@@ -76,12 +83,6 @@
       showNotification('New screenshot is taken', 'success');
     });
   }
-%div{:class => "top-banner-logo"}
-  %a{:href => "/"}
-    %img{:src => "img/captain_android.png"}
-%div{:class => "top-banner-text"}
-  %h1{:class => "terminal"} Captain adb
-%div{:class => "new-line"}
 %h2{:class => "vertical-center", :style => "display: inline-block;"} Devices List
 %button{:type => "button", :class => "btn btn-warning vertical-center", :onclick => "loadDevicesList()", :style => "display: inline-block; margin-left: 10px;"} ↻
 %form{:role => "form", :action => "/devices/", :method => "post"}

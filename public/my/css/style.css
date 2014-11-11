@@ -1,20 +1,58 @@
+html, body {
+  padding: 0px;
+  margin: 0px;
+  box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+}
+
 .new-line {
   margin-top: 10px;
 }
 
+.top-banner {
+  background-color: #fff;
+  position:fixed;
+  top:0;
+  width:100%;
+  z-index:100;
+  box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+}
+
 .top-banner-logo {
   display: inline-block;
-  margin-bottom: 10px;
-  margin-left: 10px;
-  margin-right: 10px;
-  margin-top: 10px;
+  max-width: 30%;
+  box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+}
+
+.top-banner-logo img {
+  width: 75px;
+  max-width: 100%;
+  max-height: 100%;
+  padding: 10px;
 }
 
 .top-banner-text {
   display: inline-block;
+  max-width: 70%;
   height: 100%;
-  vertical-align: bottom;
-  margin-left: 50px;
+  vertical-align: middle;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  padding: 0px;
+  box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+}
+
+.top-banner-text h1 {
+  padding: 0px;
+  margin: 0px;
+  margin: auto;
 }
 
 .terminal {
@@ -45,4 +83,14 @@
 
 .fotorama__wrap--slide {
   margin: auto;
+}
+
+@media only screen and (max-width: 566px) {
+  .top-banner-text h1 {
+    font-size: 2em;
+  }
+  
+  .top-banner-logo img {
+    width: 50px;
+  }
 }
