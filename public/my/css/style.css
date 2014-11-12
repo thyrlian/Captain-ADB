@@ -70,8 +70,11 @@ html, body {
 
 .vertical-center {
   position: relative;
-  top: 50%;
-  transform: translateY(-50%);
+  vertical-align: middle;
+}
+
+.vertical-center h1, .vertical-center h2, .vertical-center h3 {
+  margin: auto;
 }
 
 .centeredImgDiv {

@@ -85,8 +85,9 @@
       showNotification('New screenshot is taken', 'success');
     });
   }
-%h2{:class => "vertical-center", :style => "display: inline-block;"} Devices List
-%button{:type => "button", :class => "btn btn-warning vertical-center", :onclick => "loadDevicesList()", :style => "display: inline-block; margin-left: 10px;"} ↻
+%div{:class => "vertical-center"}
+  %h2{:class => "vertical-center", :style => "display: inline-block;"} Devices List
+  %button{:type => "button", :class => "btn btn-warning vertical-center", :onclick => "loadDevicesList()", :style => "display: inline-block; margin-left: 10px;"} ↻
 %form{:role => "form", :action => "/devices/", :method => "post"}
   %div{:id => "devicesList"}
 %form{:role => "form", :action => "/devices/#{session[:device_sn]}/packages/", :method => "post"}
