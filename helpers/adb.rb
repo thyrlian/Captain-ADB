@@ -4,8 +4,13 @@ module CaptainADB
   module ADB
     def list_devices
       list = `adb devices`
-      devices = list.split("\n")[1..-1].inject([]) do |devices, device|
-        devices.push(device.split("\t").first)
+      devices = list.split("\n").inject([]) do |devices, device|
+        device_info = device.split("\t")
+        if device_info.size == 2
+          devices.push(device_info.first)
+        else
+          devices
+        end
       end
     end
     
