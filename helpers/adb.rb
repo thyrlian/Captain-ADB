@@ -89,6 +89,28 @@ module CaptainADB
       end
     end
     
+    def input_keyevent(keyevent, device_sn = nil)
+      # keyevent should < KeyEvent.getMaxKeyCode()
+      if (keyevent.to_i.to_s == keyevent.to_s) && (keyevent.to_i >= 0 && keyevent.to_i <= 221)
+        cmd = PrivateMethods.synthesize_command("adb shell input keyevent #{keyevent}", device_sn)
+        `#{cmd}`
+        return true
+      else
+        return false
+      end
+    end
+    
+    def input_text(text, device_sn = nil)
+      text = text.gsub(/\s/, '%s')
+      cmd = PrivateMethods.synthesize_command("adb shell input text #{text}", device_sn)
+      `#{cmd}`
+    end
+    
+    def press_power_button(device_sn = nil)
+      keycode_power = 26
+      input_keyevent(keycode_power, device_sn)
+    end
+    
     # Precondition: device needs to be rooted
     def change_language(language, country, device_sn = nil)
       cmd = PrivateMethods.synthesize_command("adb shell \"su -c 'setprop persist.sys.language #{language}; setprop persist.sys.country #{country}; stop; sleep 5; start'\"", device_sn)
