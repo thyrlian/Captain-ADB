@@ -106,13 +106,17 @@
   %div{:id => "chosenPackage", :class => "new-line"}
     %strong Chosen Application Package:&nbsp;
     %em #{session[:package_name]}
-  %div{:class => "new-line"}
-    %button{:id => "btnDeletePackage", :type => "button", :class => "btn btn-danger", :onclick => "deletePackage()"} Delete Application
-  %div{:class => "new-line"}
-    %button{:id => "btnDeletePackageData", :type => "button", :class => "btn btn-danger", :onclick => "deletePackageData()"} Remove App Data & Cache
-- if session[:device_sn]
-  %div{:class => "new-line"}
-    %button{:id => "btnScreenshot", :type => "button", :class => "btn btn-primary", :onclick => "takeScreenshot()"} Take Screenshot
+- if session[:device_sn] && session[:package_name]
+  %div{:class => "row"}
+    %div{:class => "col-sm-4"}
+      %div{:class => "tile bg-screenshot"}
+        %span{:class => "clickable tile-text", :onclick => "takeScreenshot()"} Take Screenshot
+    %div{:class => "col-sm-4"}
+      %div{:class => "tile bg-delete"}
+        %span{:class => "clickable tile-text", :onclick => "deletePackage()"} Delete Package
+    %div{:class => "col-sm-4"}
+      %div{:class => "tile bg-clean"}
+        %span{:class => "clickable tile-text", :onclick => "deletePackageData()"} Delete Package Cache Data
 - unless settings.screenshot_files.empty?
   %h2 Screenshots
   %div{:id => "fotoramaContainer", :class => "centeredImgDiv"}
