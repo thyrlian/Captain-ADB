@@ -3,7 +3,18 @@ require_relative 'io_stream'
 module CaptainADB
   module ADB
     def restart_server
-      system('adb kill-server && adb start-server')
+      cmd = 'adb kill-server && adb start-server'
+      result = `#{cmd}`.split("\n").last
+      if result.nil?
+        return [false, {'message' => 'Error, please try again'}]
+      else
+        result = result.gsub(/\s?\*\s?/, '')
+        if result.include?('success')
+          return [true, {'message' => result}]
+        else
+          return [false, {'message' => result}]
+        end
+      end
     end
     
     def list_devices

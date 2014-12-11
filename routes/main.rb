@@ -7,8 +7,9 @@ module CaptainADB
     
     namespace '/api' do
       post '/adb/action/restart/?' do
-        restart_server
-        return 202
+        content_type :json
+        result = restart_server
+        result.first ? [200, result[1].to_json] : [500, result[1].to_json]
       end
     end
     
