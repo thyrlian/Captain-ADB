@@ -2,6 +2,10 @@ require_relative 'io_stream'
 
 module CaptainADB
   module ADB
+    def restart_server
+      system('adb kill-server && adb start-server')
+    end
+    
     def list_devices
       list = `adb devices`
       devices = list.split("\n").inject([]) do |devices, device|
