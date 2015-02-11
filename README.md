@@ -36,4 +36,13 @@ PUT `devices/:device_sn`
     "country": "us"
 }
 ```
+
+##Thanks:
 Special thanks to my frontend specialist - [**Miguel**](http://henrique.pt/)  twitter:[@lordcracker](https://twitter.com/lordcracker)  github:[@ellite](https://github.com/ellite)
+
+##Attribution:
+[Icon](http://www.flaticon.com/free-icon/photo-camera_68906) made by [Freepik](http://www.freepik.com) from [Flaticon](http://www.flaticon.com) is licensed under [CC BY 3.0](http://creativecommons.org/licenses/by/3.0/)
+
+[Icon](http://www.flaticon.com/free-icon/rubbish-bin_63260) made by [Icon Works](http://icon-works.com) from [Flaticon](http://www.flaticon.com) is licensed under [CC BY 3.0](http://creativecommons.org/licenses/by/3.0/)
+
+[Icon](http://www.flaticon.com/free-icon/delete-database_51504) made by [Freepik](http://www.freepik.com) from [Flaticon](http://www.flaticon.com) is licensed under [CC BY 3.0](http://creativecommons.org/licenses/by/3.0/)
