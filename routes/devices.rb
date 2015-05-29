@@ -5,7 +5,6 @@ module CaptainADB
     register Sinatra::Namespace
     include ADB
     include FileHelper
-    include Sinatra::SessionHelper
     
     namespace '/api/devices' do
       get '/?' do

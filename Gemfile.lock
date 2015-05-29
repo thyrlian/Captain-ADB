@@ -7,8 +7,6 @@ GEM
     json (1.7.7)
     multi_json (1.9.0)
     rack (1.5.2)
-    rack-flash3 (1.0.5)
-      rack
     rack-protection (1.5.2)
       rack
     rack-test (0.6.2)
@@ -32,6 +30,5 @@ PLATFORMS
 DEPENDENCIES
   haml
   json
-  rack-flash3
   sinatra
   sinatra-contrib

@@ -4,13 +4,15 @@ module CaptainADB
   class App < Sinatra::Base
     register Sinatra::Namespace
     include ADB
-    include Sinatra::SessionHelper
     
     namespace '/test/monkey' do
       get '/start/?' do
-        execute_if_package_name_exists_else_show_flash do |package_name|
+        package_name = session[:package_name]
+        if package_name
           start_monkey_test(package_name)
           'Monkey Test starts'
+        else
+          return 404
         end
       end
 

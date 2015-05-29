@@ -143,9 +143,9 @@ module CaptainADB
       return exit_status == 0
     end
 
-    def start_monkey_test(package_name, numbers_of_events = 50000)
-      # `adb shell monkey -p #{package_name} -v #{numbers_of_events}`
-      cmd = "adb shell monkey -p #{package_name} -v #{numbers_of_events}"
+    def start_monkey_test(package_name, device_sn = nil, options = {})
+      numbers_of_events = options.fetch(:numbers_of_events, 50000)
+      cmd = PrivateMethods.synthesize_command("adb shell monkey -p #{package_name} -v #{numbers_of_events}", device_sn)
       IoStream.redirect_command_output(cmd) do |line|
         puts line
       end

@@ -2,7 +2,6 @@ require 'sinatra/base'
 require 'sinatra/contrib'
 require 'haml'
 require 'json'
-require 'rack-flash'
 
 require_relative 'routes/init'
 require_relative 'helpers/init'
@@ -20,7 +19,6 @@ module CaptainADB
       enable :sessions
       register Sinatra::Namespace
       helpers Sinatra::JSON
-      use Rack::Flash
     end
   end
 end
