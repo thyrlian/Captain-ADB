@@ -37,6 +37,9 @@ PUT `devices/:device_sn`
 }
 ```
 
+##License
+Copyright (c) 2016 Jing Li. See the LICENSE file for license rights and limitations (MIT).
+
 ##Thanks:
 Special thanks to my frontend specialist - [**Miguel**](http://henrique.pt/)  twitter:[@lordcracker](https://twitter.com/lordcracker)  github:[@ellite](https://github.com/ellite)
 
