@@ -59,6 +59,24 @@ module CaptainADB
           return 400
         end
       end
+      
+      post '/:device_sn/deeplinks/?' do |device_sn|
+        request.body.rewind
+        json = request.body.read.to_s
+        if json && json.length >= 2
+          req_data = JSON.parse(json)
+          package_name = req_data['packageName']
+          deep_link = req_data['deepLink']
+          if package_name && deep_link
+            result = open_app_via_deep_link(package_name, deep_link, device_sn)
+            result.first ? [201, result[1].to_json] : [500, result[1].to_json]
+          else
+            return 500
+          end
+        else
+          return 500
+        end
+      end
     end
     
     namespace '/devices' do

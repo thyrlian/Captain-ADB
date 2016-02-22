@@ -36,6 +36,13 @@ PUT `devices/:device_sn`
     "country": "us"
 }
 ```
+POST `devices/:device_sn/deeplinks`  
+```
+{
+    "packageName": "com.example.android",
+    "deepLink": "https://www.android.com/example"
+}
+```
 
 ##License
 Copyright (c) 2016 Jing Li. See the LICENSE file for license rights and limitations (MIT).
