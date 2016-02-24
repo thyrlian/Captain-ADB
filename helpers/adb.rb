@@ -143,6 +143,16 @@ module CaptainADB
       return exit_status == 0
     end
     
+    def get_current_activity(device_sn = nil)
+      cmd = PrivateMethods.synthesize_command('adb shell dumpsys activity', device_sn)
+      result = `#{cmd}`.chomp.match(/mFocusedActivity:.*?\{[^.]*?((\S+\.)*\S+)[^.]*?\}/i)
+      if result
+        return [true, {'message' => result[1]}]
+      else
+        return false
+      end
+    end
+    
     def open_app_via_deep_link(package_name, deep_link, device_sn = nil)
       cmd = PrivateMethods.synthesize_command("adb shell am start -W -a android.intent.action.VIEW -d \"#{deep_link}\" #{package_name}", device_sn)
       # exit status is always 0 here
@@ -155,7 +165,7 @@ module CaptainADB
         return false
       end
     end
-
+    
     def start_monkey_test(package_name, device_sn = nil, options = {})
       numbers_of_events = options.fetch(:numbers_of_events, 50000)
       cmd = PrivateMethods.synthesize_command("adb shell monkey -p #{package_name} -v #{numbers_of_events}", device_sn)
