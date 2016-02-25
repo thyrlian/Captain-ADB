@@ -6,6 +6,7 @@ module CaptainADB
     include ADB
     include FileHelper
     
+    # APIs
     namespace '/api/devices' do
       get '/?' do
         content_type :json
@@ -79,6 +80,7 @@ module CaptainADB
       end
     end
     
+    # Frontend
     namespace '/devices' do
       post '/?' do
         session[:device_sn] = params[:device_sn]
