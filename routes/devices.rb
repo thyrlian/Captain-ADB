@@ -7,6 +7,7 @@ module CaptainADB
     include FileHelper
     
     # APIs
+    # ==================================================
     namespace '/api/devices' do
       get '/?' do
         content_type :json
@@ -18,6 +19,8 @@ module CaptainADB
         json devices
       end
       
+      # Packages
+      # ==================================================
       get '/:device_sn/packages/?' do |device_sn|
         content_type :json
         json list_installed_packages(device_sn)
@@ -81,6 +84,7 @@ module CaptainADB
     end
     
     # Frontend
+    # ==================================================
     namespace '/devices' do
       post '/?' do
         session[:device_sn] = params[:device_sn]
