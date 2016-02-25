@@ -39,6 +39,13 @@ module CaptainADB
         clear_app(params[:package_name], params[:device_sn]) ? 204 : 404
       end
       
+      # Activities
+      # ==================================================
+      get '/:device_sn/activities/focused/?' do |device_sn|
+        content_type :json
+        json [get_current_activity(device_sn)]
+      end
+      
       post '/:device_sn/screenshots/?' do |device_sn|
         content_type :json
         result = take_a_screenshot(settings.screenshot_dir, device_sn)

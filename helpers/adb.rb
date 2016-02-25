@@ -147,9 +147,9 @@ module CaptainADB
       cmd = PrivateMethods.synthesize_command('adb shell dumpsys activity', device_sn)
       result = `#{cmd}`.chomp.match(/mFocusedActivity:.*?\{[^.]*?((\S+\.)*\S+)[^.]*?\}/i)
       if result
-        return [true, {'message' => result[1]}]
+        return result[1]
       else
-        return false
+        return ''
       end
     end
     
