@@ -5,6 +5,17 @@ module CaptainADB
     register Sinatra::Namespace
     include ADB
     
+    not_found do
+      if request.accept?('text/html')
+        return 'Not Found'
+      elsif request.accept?('application/json')
+        content_type :json
+        return {'error' => 'Not Found'}.to_json
+      else
+        return 'Not Found'
+      end
+    end
+    
     namespace '/api' do
       post '/adb/action/restart/?' do
         content_type :json
