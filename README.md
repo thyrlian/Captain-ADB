@@ -1,4 +1,4 @@
-![](https://github.com/thyrlian/Captain-ADB/blob/master/public/img/captain_android.png)
+<img src="https://github.com/thyrlian/Captain-ADB/blob/master/public/img/captain_android.png" width="200">
 
 Captain-ADB
 ===========
