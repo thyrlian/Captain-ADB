@@ -7,12 +7,12 @@ module CaptainADB
     
     not_found do
       if request.accept?('text/html')
-        return 'Not Found'
+        send_file 'views/404.html'
       elsif request.accept?('application/json')
         content_type :json
         return {'error' => 'Not Found'}.to_json
       else
-        return 'Not Found'
+        send_file 'views/404.html'
       end
     end
     
