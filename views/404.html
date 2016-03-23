@@ -10,6 +10,8 @@
     <style type="text/css">
       body {
         font-family: Circular,"Helvetica Neue",Helvetica,Arial,sans-serif;
+        box-sizing: border-box;
+        height: 100%;
       }
       h1 {
         margin: 10px 0px;
@@ -21,19 +23,41 @@
         line-height: 1.1;
         text-rendering: optimizelegibility;
       }
+      .container {
+        display: -webkit-box;
+        display: -moz-box;
+        display: -ms-flexbox;
+        display: -webkit-flex;
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        justify-content: center;
+        box-sizing: border-box;
+        padding: 15px;
+        height: 100%;
+      }
+      .container > div {
+        flex: 1 0 300px;
+        padding: 25px;
+      }
+      @media (max-width: 740px) {
+        .container {
+          flex-direction: column;
+        }
+      }
     </style>
   </head>
   <body style="background-color: #a4c639;">
-    <div id="container" style="padding: 15;">
-      <div id="content" style="float: left; width: 400px; padding: 12px;">
-        <div id="title" style="width: 0; min-width: 100%;">
+    <div class="container">
+      <div class="content">
+        <div class="title" style="width: 0; min-width: 100%;">
           <h1 style="font-size: 100px; font-weight: 900;">Huh?!</h1>
         </div>
     		<p>Sorry, I don't know what you're talking about.</p>
         <p style="color: #f20075; font-size: 16px;">Error: 404 Not Found</p>
         <p><a href="javascript:history.back()">Go Back</a>  or  <a href="/">Go Home</a></p></p>
       </div>
-      <div id="image" style="height: auto; margin: 20px;">
+      <div class="image">
         <img src="/img/captain_android_in_lost.png" width="400" style="max-width: 100%; height: auto;">
       </div>
     </div>
