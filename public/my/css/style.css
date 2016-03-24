@@ -162,37 +162,6 @@ html, body {
 
 /* Error Page */
 /* ====================================================================== */
-body.error {
-  font-family: Circular,"Helvetica Neue",Helvetica,Arial,sans-serif;
-  height: 100%;
-  background-color: #a4c639;
-}
-
-h1.error {
-  font-size: 100px;
-  font-weight: 900;
-  margin: 10px 0px;
-}
-
-p.error {
-  color: #565a5c;
-  font-size: 28px;
-  font-weight: normal;
-  line-height: 1.1;
-  max-width: 15em;
-  text-rendering: optimizelegibility;
-}
-
-img.error {
-  max-width: 100%;
-  height: auto;
-}
-
-.error.cause {
-  color: #f20075;
-  font-size: 16px;
-}
-
 .error.container {
   display: -webkit-box;
   display: -moz-box;
@@ -216,5 +185,36 @@ img.error {
   .error.container {
     flex-direction: column;
   }
+}
+
+body.error {
+  font-family: Circular,"Helvetica Neue",Helvetica,Arial,sans-serif;
+  height: 100%;
+  background-color: #a4c639;
+}
+
+.error.heading {
+  font-size: 100px;
+  font-weight: 900;
+  margin: 10px 0;
+}
+
+p.error.cause {
+  color: #f20075;
+  font-size: 16px;
+}
+
+.error.content {
+  color: #565a5c;
+  font-size: 28px;
+  font-weight: normal;
+  line-height: 1.1;
+  max-width: 15em;
+  text-rendering: optimizelegibility;
+}
+
+.error.image > img {
+  max-width: 100%;
+  height: auto;
 }
 /* ====================================================================== */
