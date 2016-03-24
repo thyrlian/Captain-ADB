@@ -10,10 +10,12 @@
     <style type="text/css">
       body {
         font-family: Circular,"Helvetica Neue",Helvetica,Arial,sans-serif;
-        box-sizing: border-box;
         height: 100%;
+        background-color: #a4c639;
       }
       h1 {
+        font-size: 100px;
+        font-weight: 900;
         margin: 10px 0px;
       }
       p {
@@ -22,6 +24,10 @@
         font-weight: normal;
         line-height: 1.1;
         text-rendering: optimizelegibility;
+      }
+      img {
+        max-width: 100%;
+        height: auto;
       }
       .container {
         display: -webkit-box;
@@ -47,16 +53,16 @@
       }
     </style>
   </head>
-  <body style="background-color: #a4c639;">
+  <body>
     <div class="container">
       <div class="content">
-        <h1 style="font-size: 100px; font-weight: 900;">Huh?!</h1>
+        <h1>Huh?!</h1>
     		<p style="max-width: 15em;">Sorry, I don't know what you're talking about.</p>
         <p style="color: #f20075; font-size: 16px;">Error: 404 Not Found</p>
         <p><a href="javascript:history.back()">Go Back</a>  or  <a href="/">Go Home</a></p></p>
       </div>
       <div class="image">
-        <img src="/img/captain_android_in_lost.png" width="400" style="max-width: 100%; height: auto;">
+        <img src="/img/captain_android_in_lost.png" width="400">
       </div>
     </div>
   </body>
