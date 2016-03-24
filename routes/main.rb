@@ -16,6 +16,17 @@ module CaptainADB
       end
     end
     
+    error 500..599 do
+      if request.accept?('text/html')
+        send_file 'views/error.html'
+      elsif request.accept?('application/json')
+        content_type :json
+        return {'error' => env['sinatra.error'].message}.to_json
+      else
+        send_file 'views/error.html'
+      end
+    end
+    
     namespace '/api' do
       post '/adb/action/restart/?' do
         content_type :json
