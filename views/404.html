@@ -8,28 +8,33 @@
   	<title>Page Not Found · Captain ADB</title>
   	<link rel="icon" href="/img/favicon.png">
     <style type="text/css">
-      body {
+      body.error {
         font-family: Circular,"Helvetica Neue",Helvetica,Arial,sans-serif;
         height: 100%;
         background-color: #a4c639;
       }
-      h1 {
+      h1.error {
         font-size: 100px;
         font-weight: 900;
         margin: 10px 0px;
       }
-      p {
+      p.error {
         color: #565a5c;
         font-size: 28px;
         font-weight: normal;
         line-height: 1.1;
+        max-width: 15em;
         text-rendering: optimizelegibility;
       }
-      img {
+      img.error {
         max-width: 100%;
         height: auto;
       }
-      .container {
+      .error.cause {
+        color: #f20075;
+        font-size: 16px;
+      }
+      .error.container {
         display: -webkit-box;
         display: -moz-box;
         display: -ms-flexbox;
@@ -42,27 +47,27 @@
         padding: 15px;
         height: 100%;
       }
-      .container > div {
+      .error.container > div {
         flex: 1 0 300px;
         padding: 25px;
       }
       @media (max-width: 740px) {
-        .container {
+        .error.container {
           flex-direction: column;
         }
       }
     </style>
   </head>
-  <body>
-    <div class="container">
-      <div class="content">
-        <h1>Huh?!</h1>
-    		<p style="max-width: 15em;">Sorry, I don't know what you're talking about.</p>
-        <p style="color: #f20075; font-size: 16px;">Error: 404 Not Found</p>
-        <p><a href="javascript:history.back()">Go Back</a>  or  <a href="/">Go Home</a></p></p>
+  <body class="error">
+    <div class="error container">
+      <div class="error content">
+        <h1 class="error">Huh?!</h1>
+    		<p class="error">Sorry, I don't know what you're talking about.</p>
+        <p class="error cause">Error: 404 Not Found</p>
+        <p class="error"><a href="javascript:history.back()">Go Back</a>  or  <a href="/">Go Home</a></p></p>
       </div>
-      <div class="image">
-        <img src="/img/captain_android_in_lost.png" width="400">
+      <div class="error image">
+        <img class="error" src="/img/captain_android_in_lost.png" width="400">
       </div>
     </div>
   </body>
