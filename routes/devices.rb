@@ -61,7 +61,7 @@ module CaptainADB
           language = req_data['language']
           country = req_data['country']
           if language && country
-            change_language(language, country, device_sn)
+            Thread.start{ change_language(language, country, device_sn) }
             return 202
           else
             return 400
