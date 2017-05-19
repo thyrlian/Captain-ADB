@@ -16,7 +16,7 @@ Providing simple web API and view for Android Debug Bridge (adb).  Free your ima
 1. Clone this project, and go to project directory
 2. Run `bundle install`
 3. Run `rackup -p <PORT> -o 0.0.0.0` (or `bundle exec rackup -p <PORT> -o 0.0.0.0`)
-4. Open a browser, type in this URL http://localhost:<PORT>
+4. Open a browser, type in this URL http://localhost:PORT
 
 ##API:
 ###Schema
