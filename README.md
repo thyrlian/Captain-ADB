@@ -52,7 +52,7 @@ POST `devices/:device_sn/deeplinks`
 
 ## License
 
-Copyright (c) 2016 Jing Li. See the LICENSE file for license rights and limitations (MIT).
+Copyright (c) 2016 Jing Li. See the [LICENSE](https://github.com/thyrlian/Captain-ADB/blob/master/LICENSE) file for license rights and limitations (MIT).
 
 ## Thanks
 
